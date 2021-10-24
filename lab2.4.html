@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD><TITLE>Лабораторная работа N 2.4</TITLE>
+</HEAD>
+<BODY>
+
+<p align=left><table border=0><tr valign=top><td>
+<SCRIPT LANGUAGE="JavaScript">
+document.write(setClock())
+document.write(setDate())
+var buton = document.createElement('button')
+var textb = document.createTextNode('')
+buton.appendChild(textb)
+buton.style.opacity = 0.1
+buton.style.position = "absolute"
+buton.style.height = '20px'
+buton.style.left = '100px'
+document.body.appendChild(buton)
+buton.onclick = draw1
+function draw1(){
+	document.body.innerHTML = ""
+	document.write(setClock())
+	document.write(setDate1())
+	document.body.appendChild(buton)
+	buton.onclick = draw2
+}
+function draw2(){
+	document.body.innerHTML = ""
+	document.write(setClock())
+	document.write(setDate())
+	buton.onclick = draw1
+	document.body.appendChild(buton)
+
+}
+function setClock() { 
+	var text = ""  
+	
+	var openImage = "<IMG SRC=\"" + getPath(location.href) + "\dg"
+	var closeImage = ".gif\" HEIGHT=21 WIDTH=16>"
+	
+	var now = new Date() 
+	
+	var hour = now.getHours() 
+	
+	var minute = now.getMinutes() 
+	
+	now = null
+	
+	var ampm = "" 
+	if (hour >= 12) {
+		hour -= 12
+		ampm = "pm"
+	} else
+		ampm = "am"
+	hour = (hour == 0) ? 12 : hour
+	
+	if (minute < 10)
+		minute = "0" + minute 
+	minute += ""
+	hour += ""
+	
+	for (var i = 0; i < hour.length; ++i) { 
+
+	
+		text += openImage + hour.charAt(i) + closeImage
+	}
+	text += openImage + "c.gif\" HEIGHT=21 WIDTH=9>" 
+	
+	for (var i = 0; i < minute.length; ++i) {
+		text += openImage + minute.charAt(i) + closeImage
+	}
+	text += openImage + ampm + closeImage
+	
+	return text 
+	}
+	
+	function getPath(url) {
+	lastSlash = url.lastIndexOf("/")
+	
+	return url.substring(0, lastSlash + 1)
+	}
+function setDate() { 
+	var text = "" 
+	var openImage = "<IMG SRC=\"" + getPath(location.href) + "\dg"
+	var closeImage = ".gif\" HEIGHT=21 WIDTH=16>"
+	var now = new Date()
+	var date = now.getDate()
+	var month = now.getMonth()
+	var year = now.getFullYear()
+	now = null
+
+	month++
+	date += ""
+	month += ""
+	year += ""
+
+	for (var i = 0; i < date.length; ++i) {
+		text += openImage + date.charAt(i) + closeImage
+	}
+	text += openImage + "p.gif\" HEIGHT=21 WIDTH=9>" 
+	for (var i = 0; i < month.length; ++i) {
+		text += openImage + month.charAt(i) + closeImage
+	}
+	text += openImage + "p.gif\" HEIGHT=21 WIDTH=9>" 
+	
+	for (var i = 0; i < year.length; ++i) {
+		text += openImage + year.charAt(i) + closeImage
+	}
+	return text}
+	
+	function getPath(url) {
+	lastSlash = url.lastIndexOf("/")
+	return url.substring(0, lastSlash + 1)
+	}
+
+         function clock_status() {
+         window.setTimeout("clock_status()",100);
+	 today=new Date();
+	 self.status=today.toString();
+
+	 }
+function setDate1() { 
+	var text = "" 
+	var openImage = "<IMG SRC=\"" + getPath(location.href) + "\dg"
+	var closeImage = ".gif\" HEIGHT=21 WIDTH=16>"
+	var now = new Date()
+	var date = now.getDate()
+	var month = now.getMonth()
+	var year = now.getFullYear()
+	now = null
+	date = date - 1
+	month++
+	date += ""
+	month += ""
+	year += ""
+
+	for (var i = 0; i < date.length; ++i) {
+		text += openImage + date.charAt(i) + closeImage
+	}
+	text += openImage + "p.gif\" HEIGHT=21 WIDTH=9>" 
+	for (var i = 0; i < month.length; ++i) {
+		text += openImage + month.charAt(i) + closeImage
+	}
+	text += openImage + "p.gif\" HEIGHT=21 WIDTH=9>" 
+	
+	for (var i = 0; i < year.length; ++i) {
+		text += openImage + year.charAt(i) + closeImage
+	}
+	return text}
+	
+	function getPath(url) {
+	lastSlash = url.lastIndexOf("/")
+	return url.substring(0, lastSlash + 1)
+	}
+
+         function clock_status() {
+         window.setTimeout("clock_status()",100);
+	 today=new Date();
+	 self.status=today.toString();
+
+	 }	 
+</SCRIPT>
+<style type="text/css">
+  #text {
+  position: absolute;
+  top: 00.1%;
+  left: 7%;
+}
+  </style>
+
+</BODY></HTML>
